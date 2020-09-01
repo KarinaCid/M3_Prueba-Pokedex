@@ -41,10 +41,43 @@ function generarCard(personaje){
 
       </div>
     </div>
-  </div>
-  `
+  </div>`
+      //Grafico
+      var hp =  personaje.stats[0].base_stat;
+      var atk = personaje.stats[1].base_stat;
+      var def = personaje.stats[2].base_stat;
+      var sat = personaje.stats[3].base_stat;
+      var sdf = personaje.stats[4].base_stat;
+      var spd = personaje.stats[5].base_stat;
+      var pokest = [];
+       pokest.push(hp, atk, def, sat, sdf, spd);
+       
+  
+  
+        var chart = new CanvasJS.Chart("pokemon-grafico", {
+          theme: "light1", // "light2", "dark1", "dark2"
+          animationEnabled: false, // change to true		
+          title:{
+            text: "Gráfico Pokémon"
+          },
+          data: [
+          {
+            // Change type to "bar", "area", "spline", "pie",etc.
+            type: "column",
+            dataPoints: [
+              { label: "HP",  y:parseFloat(hp)  },
+              { label: "Ataque", y: parseFloat(atk)  },
+              { label: "Defensa", y: parseFloat(def) },
+              { label: "Ataque Especial",  y: parseFloat(sat) },
+              { label: "Defensa Especial",  y: parseFloat(sdf)  },
+              { label: "Velocidad",  y: parseFloat(spd)  }
+            ]
+          }
+          ]
+        });
+        chart.render();
   return card;
-}
+};
 
 function validacion(id){
   var expresion = /^\d{1,3}$/;
@@ -70,4 +103,15 @@ function buscarPersonaje(){
 function limpiar(){
   $("#card").empty();
   $("#input_busqueda").focus();
+}
+
+function getAllhabilities() {
+  $.ajax({
+    type: "GET",
+    url: "url",
+
+    success: function (response) {
+      
+    }
+  });
 }
