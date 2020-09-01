@@ -103,7 +103,6 @@ function buscarPersonaje(){
 function limpiar(){
   $("#card").empty();
   $("#pokemon-grafico").empty();
-  $("#data").empty();
   $("#input_busqueda").focus();
 }
 
